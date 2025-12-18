@@ -1,89 +1,64 @@
-import Image from "next/image";
-import { Instagram, Mail, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-zinc-400 px-6 py-20">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+    <footer className="bg-black px-10 py-12 text-sm font-sans text-gray-300">
+      <div className="max-w-4xl mx-auto flex flex-col md:flex-row md:justify-between gap-10 md:gap-12 px-6">
 
-        {/* Brand */}
-        <div>
-          <Image
-            src="/images/logo-white.png"
-            alt="Artistic Studio"
-            width={140}
-            height={40}
-            className="mb-6"
-          />
-          <p className="text-sm leading-relaxed max-w-xs">
-            Artistic Studio — crafting honest wedding and pre-wedding stories
-            with emotion, restraint, and timeless detail.
-          </p>
+        {/* Contact Column */}
+        <div className="space-y-2">
+          <h3 className="uppercase text-gray-400 tracking-wider font-medium">Contact</h3>
+          <p>+91 9902213636</p>
+          <p>hello@studio.com</p>
+          <p>Bangalore 560039</p>
         </div>
 
-        {/* Navigation */}
-        <div>
-          <p className="text-xs uppercase tracking-widest text-zinc-500 mb-6">
-            Explore
-          </p>
-          <ul className="space-y-4 text-sm">
-            <li>
-              <a href="/weddings" className="hover:text-white transition">
-                Weddings
-              </a>
-            </li>
-            <li>
-              <a href="/pre-weddings" className="hover:text-white transition">
-                Pre-Weddings
-              </a>
-            </li>
-            <li>
-              <a href="/contact" className="hover:text-white transition">
-                Contact
-              </a>
-            </li>
+        {/* Social Column */}
+        <div className="space-y-2">
+          <h3 className="uppercase text-gray-400 tracking-wider font-medium">Social</h3>
+          <ul className="space-y-1">
+            <li><a href="https://instagram.com/yourstudio" target="_blank" className="hover:text-white transition">Instagram</a></li>
+            <li><a href="https://youtube.com/yourstudio" target="_blank" className="hover:text-white transition">YouTube</a></li>
+            <li><a href="https://facebook.com/yourstudio" target="_blank" className="hover:text-white transition">Facebook</a></li>
+            <li><a href="https://linkedin.com/yourstudio" target="_blank" className="hover:text-white transition">LinkedIn</a></li>
+            <li><a href="https://twitter.com/yourstudio" target="_blank" className="hover:text-white transition">Twitter</a></li>
           </ul>
         </div>
 
-        {/* Contact */}
-        <div>
-          <p className="text-xs uppercase tracking-widest text-zinc-500 mb-6">
-            Connect
-          </p>
-
-          <div className="space-y-4 text-sm">
-            <a
-              href="https://instagram.com/yourstudio"
-              target="_blank"
-              className="flex items-center gap-3 hover:text-white transition"
-            >
-              <Instagram size={16} />
-              Instagram
-            </a>
-
-            <a
-              href="tel:+919900000000"
-              className="flex items-center gap-3 hover:text-white transition"
-            >
-              <Phone size={16} />
-              Call
-            </a>
-
-            <a
-              href="mailto:hello@artisticstudio.in"
-              className="flex items-center gap-3 hover:text-white transition"
-            >
-              <Mail size={16} />
-              Email
-            </a>
-          </div>
+        {/* Quick Links Column */}
+        <div className="space-y-2">
+          <h3 className="uppercase text-gray-400 tracking-wider font-medium">Quick Links</h3>
+          <ul className="space-y-1">
+            <li><a href="/photography" className="hover:text-white transition">Photography</a></li>
+            <li><a href="/films" className="hover:text-white transition">Films</a></li>
+            <li><a href="/international" className="hover:text-white transition">International</a></li>
+            <li><a href="/connect" className="hover:text-white transition">Connect</a></li>
+          </ul>
         </div>
 
+        {/* Corporate Column */}
+        <div className="space-y-2">
+          <h3 className="uppercase text-gray-400 tracking-wider font-medium">Corporate</h3>
+          <ul className="space-y-1">
+            <li><a href="/terms" className="hover:text-white transition">Terms & Conditions</a></li>
+            <li><a href="/privacy" className="hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="/refund" className="hover:text-white transition">Cancellation & Refund</a></li>
+          </ul>
+        </div>
       </div>
 
-      <div className="mt-20 text-center text-xs text-zinc-600">
-        © {new Date().getFullYear()} Artistic Studio. All rights reserved.
+      {/* Floating Phone & WhatsApp */}
+      <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
+        <a href="tel:+919902213636" className="bg-black text-white p-3 rounded-full shadow hover:bg-gray-900 transition">
+          <Phone size={20} />
+        </a>
+        <a href="https://wa.me/919902213636" target="_blank" className="bg-black text-white p-3 rounded-full shadow hover:bg-gray-900 transition">
+          <FaWhatsapp size={20} />
+        </a>
       </div>
+
+     
     </footer>
   );
 }
