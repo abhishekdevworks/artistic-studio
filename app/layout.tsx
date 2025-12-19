@@ -6,7 +6,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 
-import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 /* UI / Navigation Font */
@@ -34,17 +34,11 @@ export const metadata: Metadata = {
     "Artistic Studio – Premium wedding photography and cinematic films.",
 };
 
-export const headings = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-headings",
-});
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
@@ -57,8 +51,13 @@ export default function RootLayout({
           text-white
         `}
       >
-        <Header />
+        {/* Premium Mobile + Desktop Navbar */}
+        <Navbar />
+
+        {/* Page Content */}
         {children}
+
+        {/* Footer */}
         <Footer />
       </body>
     </html>
