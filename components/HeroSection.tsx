@@ -2,10 +2,15 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden bg-black">
       {/* Background Video */}
       <video
-        className="absolute inset-0 h-full w-full object-cover"
+        className="
+          absolute inset-0
+          h-full w-full
+          object-contain
+          md:object-cover
+        "
         src="/videos/hero.webm"
         autoPlay
         muted
@@ -13,10 +18,10 @@ export default function HeroSection() {
         playsInline
       />
 
-      {/* Overlay (optional subtle darkening for text clarity) */}
+      {/* Optional subtle overlay (keep very light) */}
       <div className="absolute inset-0 bg-black/10" />
 
-      {/* Content */}
+      {/* Content – stays at bottom like premium hero */}
       <div className="absolute inset-0 flex items-end justify-center pb-14">
         <div className="flex flex-col items-center gap-7 text-white text-center">
 
@@ -38,7 +43,6 @@ export default function HeroSection() {
           <Link href="/weddings">
             <button
               className="
-                cursor-pointer
                 border border-white/60
                 px-10 py-3
                 text-[12px]
