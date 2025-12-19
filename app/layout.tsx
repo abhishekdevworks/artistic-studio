@@ -34,6 +34,12 @@ export const metadata: Metadata = {
     "Artistic Studio – Premium wedding photography and cinematic films.",
 };
 
+export const headings = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-headings",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{

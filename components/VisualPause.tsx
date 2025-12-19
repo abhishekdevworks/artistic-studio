@@ -1,5 +1,5 @@
 export default function VisualPause() {
   return (
-    <section className="h-[30vh] bg-white" />
+    <section className="h-[6vh] bg-white" />
   );
 }

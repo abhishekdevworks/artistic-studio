@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function WeddingsFeature() {
   return (
     <section className="relative h-[90vh] w-full overflow-hidden">
@@ -11,21 +13,45 @@ export default function WeddingsFeature() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full items-end px-8 pb-16 md:px-20">
-        <div className="max-w-lg text-white">
-          <h3 className="cinematic-title text-white">
-            Weddings
-          </h3>
-          <p className="mb-6 text-base text-zinc-200 md:text-lg">
-            Timeless stories crafted with honesty, emotion, and elegance.
-          </p>
-          <a
-            href="/weddings"
-            className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-white opacity-90 hover:opacity-100"
+      {/* Content — SAME AS HERO POSITION */}
+      <div className="absolute inset-0 flex items-end justify-center pb-11">
+        <div className="flex flex-col items-center gap-6 text-white">
+
+          {/* Title */}
+          <h2
+            className="
+              font-[var(--font-headings)]
+              text-[24px]
+              md:text-[28px]
+              tracking-[0.35em]
+              font-medium
+              uppercase
+            "
           >
-            View Stories →
-          </a>
+            WEDDINGS
+          </h2>
+
+          {/* Explore Button */}
+          <Link href="/weddings">
+            <button
+              className="
+                cursor-pointer
+                border border-white/70
+                px-8 py-3
+                text-[12px]
+                tracking-[0.35em]
+                uppercase
+                bg-transparent
+                text-white
+                hover:border-white
+                transition-all
+                duration-300
+              "
+            >
+              EXPLORE
+            </button>
+          </Link>
+
         </div>
       </div>
     </section>
