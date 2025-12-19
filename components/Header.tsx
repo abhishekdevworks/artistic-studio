@@ -5,12 +5,24 @@ import { Instagram, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Header() {
-  const [hidden, setHidden] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false); // header hide on scroll
+  const [menuOpen, setMenuOpen] = useState(false); // mobile menu
 
   useEffect(() => {
+    let lastScrollY = 0;
+
     const handleScroll = () => {
-      setHidden(window.scrollY > 5);
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        // scrolling down → hide header
+        setHidden(true);
+      } else {
+        // scrolling up → show header
+        setHidden(false);
+      }
+
+      lastScrollY = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -21,11 +33,12 @@ export default function Header() {
     <>
       {/* HEADER BAR */}
       <header
-        className={`absolute top-4 left-0 w-full z-50 transition-all duration-300 ease-out
-          ${hidden ? "-translate-y-24 opacity-0" : "translate-y-0 opacity-100"}
+        className={`
+          fixed top-0 left-0 w-full z-50 transition-transform duration-500 ease-in-out
+          ${hidden ? "-translate-y-full" : "translate-y-0"}
         `}
       >
-        <div className="max-w-[85rem] mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-[85rem] mx-auto px-4 py-4 flex items-center justify-between bg-black/80 backdrop-blur-md">
           {/* Logo */}
           <a href="/" className="flex items-center">
             <Image
@@ -38,7 +51,7 @@ export default function Header() {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide">
+          <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide text-white">
             <a href="/weddings" className="hover:text-zinc-300 transition">
               Weddings
             </a>
@@ -99,15 +112,23 @@ export default function Header() {
         </button>
 
         {/* Menu Links */}
-        <nav className="flex flex-col gap-8 text-lg tracking-[0.2em]">
-          <a href="/weddings" onClick={() => setMenuOpen(false)}>WEDDINGS</a>
-          <a href="/pre-weddings" onClick={() => setMenuOpen(false)}>PRE-WEDDINGS</a>
-          <a href="/portrait" onClick={() => setMenuOpen(false)}>PORTRAIT</a>
-          <a href="/contact" onClick={() => setMenuOpen(false)}>CONNECT</a>
+        <nav className="flex flex-col gap-8 text-lg tracking-[0.2em] text-white">
+          <a href="/weddings" onClick={() => setMenuOpen(false)}>
+            WEDDINGS
+          </a>
+          <a href="/pre-weddings" onClick={() => setMenuOpen(false)}>
+            PRE-WEDDINGS
+          </a>
+          <a href="/portrait" onClick={() => setMenuOpen(false)}>
+            PORTRAIT
+          </a>
+          <a href="/contact" onClick={() => setMenuOpen(false)}>
+            CONNECT
+          </a>
         </nav>
 
         {/* Socials */}
-        <div className="absolute bottom-12 flex gap-10 text-sm tracking-wide opacity-80">
+        <div className="absolute bottom-12 flex gap-10 text-sm tracking-wide opacity-80 text-white">
           <a href="#">Instagram</a>
           <a href="#">Facebook</a>
           <a href="#">LinkedIn</a>
