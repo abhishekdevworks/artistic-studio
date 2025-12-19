@@ -2,30 +2,26 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-black">
-      {/* Background Video */}
-      <video
-        className="
-          absolute inset-0
-          h-full w-full
-          object-contain
-          md:object-cover
-        "
-        src="/videos/hero.webm"
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+    <section className="relative w-full overflow-hidden bg-black">
+      
+      {/* Video Wrapper */}
+      <div className="relative w-full aspect-[4/5] md:aspect-auto md:h-screen">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/videos/hero.webm"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      </div>
 
-      {/* Optional subtle overlay (keep very light) */}
-      <div className="absolute inset-0 bg-black/10" />
+      {/* Optional subtle overlay */}
+      <div className="pointer-events-none absolute inset-0 bg-black/10" />
 
-      {/* Content – stays at bottom like premium hero */}
+      {/* Content – unchanged */}
       <div className="absolute inset-0 flex items-end justify-center pb-14">
         <div className="flex flex-col items-center gap-7 text-white text-center">
-
-          {/* Title */}
           <h1
             className="
               font-[var(--font-headings)]
@@ -39,7 +35,6 @@ export default function HeroSection() {
             ARTISTIC STUDIO
           </h1>
 
-          {/* Explore Button */}
           <Link href="/weddings">
             <button
               className="
@@ -58,7 +53,6 @@ export default function HeroSection() {
               EXPLORE
             </button>
           </Link>
-
         </div>
       </div>
     </section>
