@@ -26,7 +26,6 @@ export default function Header() {
         `}
       >
         <div className="max-w-[85rem] mx-auto px-4 py-4 flex items-center justify-between">
-
           {/* Logo */}
           <a href="/" className="flex items-center">
             <Image
@@ -73,42 +72,47 @@ export default function Header() {
       </header>
 
       {/* MOBILE FULLSCREEN MENU */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-[60] bg-black flex flex-col justify-center items-center text-center">
+      <div
+        className={`
+          fixed top-0 right-0 w-full h-full z-[60] flex flex-col justify-center items-center text-center
+          transform transition-transform duration-500 ease-in-out
+          ${menuOpen ? "translate-x-0" : "translate-x-full"}
+        `}
+      >
+        {/* Optional dim overlay behind menu */}
+        {/*
+        <div
+          className={`fixed inset-0 bg-black/50 transition-opacity duration-500 ${
+            menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setMenuOpen(false)}
+        />
+        */}
 
-          {/* Close Button */}
-          <button
-            onClick={() => setMenuOpen(false)}
-            className="absolute top-6 right-6 text-white"
-            aria-label="Close menu"
-          >
-            <X size={28} />
-          </button>
+        {/* Close Button */}
+        <button
+          onClick={() => setMenuOpen(false)}
+          className="absolute top-6 right-6 text-white"
+          aria-label="Close menu"
+        >
+          <X size={28} />
+        </button>
 
-          {/* Menu Links */}
-          <nav className="flex flex-col gap-8 text-lg tracking-[0.2em]">
-            <a href="/weddings" onClick={() => setMenuOpen(false)}>
-              WEDDINGS
-            </a>
-            <a href="/pre-weddings" onClick={() => setMenuOpen(false)}>
-              PRE-WEDDINGS
-            </a>
-            <a href="/portrait" onClick={() => setMenuOpen(false)}>
-              PORTRAIT
-            </a>
-            <a href="/contact" onClick={() => setMenuOpen(false)}>
-              CONNECT
-            </a>
-          </nav>
+        {/* Menu Links */}
+        <nav className="flex flex-col gap-8 text-lg tracking-[0.2em]">
+          <a href="/weddings" onClick={() => setMenuOpen(false)}>WEDDINGS</a>
+          <a href="/pre-weddings" onClick={() => setMenuOpen(false)}>PRE-WEDDINGS</a>
+          <a href="/portrait" onClick={() => setMenuOpen(false)}>PORTRAIT</a>
+          <a href="/contact" onClick={() => setMenuOpen(false)}>CONNECT</a>
+        </nav>
 
-          {/* Socials */}
-          <div className="absolute bottom-12 flex gap-10 text-sm tracking-wide opacity-80">
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-            <a href="#">LinkedIn</a>
-          </div>
+        {/* Socials */}
+        <div className="absolute bottom-12 flex gap-10 text-sm tracking-wide opacity-80">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">LinkedIn</a>
         </div>
-      )}
+      </div>
     </>
   );
 }

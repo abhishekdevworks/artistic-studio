@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-black px-10 py-20 text-sm font-sans text-gray-0">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:justify-between gap-10 md:gap-12 px-6">
-        
+
         {/* Contact Column */}
         <div className="space-y-4">
           <h3 className="uppercase text-gray-400 tracking-wider font-medium">Contact</h3>
@@ -13,7 +13,7 @@ export default function Footer() {
           <p>hello@studio.com</p>
           <p>Bangalore 560039</p>
         </div>
-
+        
         {/* Social Column */}
         <div className="space-y-4">
           <h3 className="uppercase text-gray-400 tracking-wider font-medium">Social</h3>
