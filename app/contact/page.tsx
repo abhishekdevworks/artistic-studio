@@ -5,115 +5,167 @@ import { useState } from "react";
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
-    eventType: "",
+    phone: "",
+    event: "",
+    date: "",
+    city: "",
     message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // For now, just log formData. Later we can integrate email service
-    console.log("Form submitted:", formData);
-    alert("Thank you! We will contact you soon.");
-    setFormData({ name: "", email: "", eventType: "", message: "" });
+    alert("Thank you. We will get back to you shortly.");
+    setFormData({
+      name: "",
+      phone: "",
+      event: "",
+      date: "",
+      city: "",
+      message: "",
+    });
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-start py-24 px-6 md:px-16">
-      {/* Intro */}
-      <section className="text-center max-w-2xl mb-16">
-        <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
-          Let’s Talk About Your Story
-        </h1>
-        <p className="text-lg md:text-xl text-zinc-300">
-          Share your vision with us. We’ll craft memories that last a lifetime.
+    <main className="bg-white text-black font-[Times_New_Roman]">
+
+      {/* HERO IMAGE */}
+      <section className="w-full">
+        <img
+          src="/images/pre-hero.jpg"
+          alt="Contact Hero"
+          className="w-full h-screen object-cover"
+        />
+      </section>
+
+      {/* INTRO TEXT */}
+      <section className="max-w-3xl mx-auto text-center px-6 py-24">
+        <p className="text-lg leading-8">
+          Please fill in the form and provide all the essential details to help us
+          create the best and accurate quote.
+        </p>
+        <p className="text-lg mt-4">
+          We will try to reach out within 24 hours. If it’s urgent, please call us
+          directly.
         </p>
       </section>
 
-      {/* Quick Contact Buttons */}
-      <section className="flex flex-col md:flex-row gap-6 mb-16">
-        <a
-          href="https://wa.me/YOUR_NUMBER"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-green-600 hover:bg-green-700 px-8 py-4 rounded-full text-lg font-semibold transition"
-        >
-          WhatsApp
-        </a>
-        <a
-          href="tel:+91YOUR_NUMBER"
-          className="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full text-lg font-semibold transition"
-        >
-          Call Us
-        </a>
-        <a
-          href="mailto:hello@artisticstudio.com"
-          className="bg-gray-700 hover:bg-gray-800 px-8 py-4 rounded-full text-lg font-semibold transition"
-        >
-          Email
-        </a>
+      {/* CONTACT INFO */}
+      <section className="max-w-4xl mx-auto text-center px-6 py-16 space-y-16">
+
+        <div>
+          <h2 className="text-3xl tracking-widest mb-6">CONTACT US</h2>
+          <p className="text-lg">Mail: hello@storiesbyrg.com</p>
+          <p className="text-lg mt-2">Call: +91 93536 24245</p>
+        </div>
+
+        <div>
+          <h2 className="text-3xl tracking-widest mb-6">MEET US</h2>
+          <p className="text-lg leading-8 max-w-3xl mx-auto">
+            Head office: First Floor, No: 12/1-1, Palace Cross Rd, Military
+            Compound, Jayamahal, Bengaluru, Karnataka 560020
+          </p>
+          <p className="text-lg leading-8 mt-4 max-w-3xl mx-auto">
+            Branch office: 92 Huda Heights Road, Lane No.12, MLA Colony,
+            Banjara Hills, Hyderabad, Telangana 500028
+          </p>
+        </div>
+
       </section>
 
-      {/* Inquiry Form */}
-      <section className="w-full max-w-xl bg-zinc-900 p-8 rounded-xl shadow-lg">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+      {/* FORM HEADING */}
+      <section className="text-center px-6 py-20">
+        <h2 className="text-3xl tracking-widest mb-6">
+          SERVICES INQUIRY FORM
+        </h2>
+        <p className="text-lg max-w-2xl mx-auto">
+          Thank you for your interest in our photography services. Please fill
+          out the form below, and we will get back to you as soon as possible.
+        </p>
+      </section>
+
+      {/* FORM BOX */}
+      <section className="flex justify-center px-6 pb-40">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-2xl bg-[#f2f2f2] rounded-2xl p-12 space-y-8"
+        >
           <input
             type="text"
             name="name"
-            placeholder="Your Name"
+            placeholder="Name*"
+            required
             value={formData.name}
             onChange={handleChange}
-            required
-            className="p-4 rounded-lg bg-zinc-800 text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-white"
+            className="w-full rounded-full px-6 py-4 outline-none"
           />
+
+          <div className="flex gap-4">
+            <select className="rounded-full px-5 py-4 outline-none">
+              <option>+91</option>
+            </select>
+            <input
+              type="text"
+              name="phone"
+              placeholder="Your Number*"
+              required
+              value={formData.phone}
+              onChange={handleChange}
+              className="flex-1 rounded-full px-6 py-4 outline-none"
+            />
+          </div>
+
           <input
-            type="email"
-            name="email"
-            placeholder="Email or Phone"
-            value={formData.email}
+            type="text"
+            name="event"
+            placeholder="Event"
+            value={formData.event}
             onChange={handleChange}
-            required
-            className="p-4 rounded-lg bg-zinc-800 text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-white"
+            className="w-full rounded-full px-6 py-4 outline-none"
           />
-          <select
-            name="eventType"
-            value={formData.eventType}
+
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
             onChange={handleChange}
-            required
-            className="p-4 rounded-lg bg-zinc-800 text-white focus:outline-none focus:ring-2 focus:ring-white"
-          >
-            <option value="" disabled>
-              Select Event Type
-            </option>
-            <option value="Wedding">Wedding</option>
-            <option value="Pre-Wedding">Pre-Wedding</option>
-          </select>
+            className="w-full rounded-full px-6 py-4 outline-none"
+          />
+
+          <input
+            type="text"
+            name="city"
+            placeholder="City*"
+            value={formData.city}
+            onChange={handleChange}
+            className="w-full rounded-full px-6 py-4 outline-none"
+          />
+
           <textarea
             name="message"
-            placeholder="Your Message"
+            placeholder="Message"
+            rows={4}
             value={formData.message}
             onChange={handleChange}
-            required
-            rows={4}
-            className="p-4 rounded-lg bg-zinc-800 text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-white"
+            className="w-full rounded-2xl px-6 py-4 outline-none resize-none"
           />
+
           <button
             type="submit"
-            className="bg-white text-black font-semibold px-6 py-4 rounded-full hover:bg-zinc-200 transition"
+            className="block mx-auto bg-black text-white px-20 py-4 mt-6"
           >
             Submit
           </button>
         </form>
       </section>
-
-      {/* Footer Reassurance */}
-      <section className="mt-12 text-center text-zinc-500">
-        We respond within 24 hours. No spam, no pressure.
-      </section>
-    </div>
+      
+    </main>
   );
 }

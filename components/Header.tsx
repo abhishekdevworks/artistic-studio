@@ -42,6 +42,9 @@ export default function Header() {
           <a href="/pre-weddings" className="hover:text-zinc-300 transition">
             Pre-Weddings
           </a>
+          <a href="/portrait" className="hover:text-zinc-300 transition">
+            Portrait
+          </a>
           <a href="/contact" className="hover:text-zinc-300 transition">
             Contact
           </a>
